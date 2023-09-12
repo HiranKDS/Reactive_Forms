@@ -1,0 +1,19 @@
+<form [formGroup]="formulario">
+    <label for=""> Insira seu nome: </label>
+        <p><input type="text" placeholder="Nome" formControlName="nome"></p>
+
+        <div class="error" *ngIf="formulario.get('nome')?.errors?.['required'] && formulario.get('nome')?.touched">
+            O campo nome é obrigatório
+        </div>
+    <label for="email"> Insira seu email: </label>
+
+        <p><input id="email" type="email" placeholder="E-mail" formControlName="email" ></p>
+        <div class="error" *ngIf="formulario.get('email')?.errors?.['required'] && formulario.get('email')?.touched">
+            o campo email é obrigatório
+        </div>
+
+        <div class="error" *ngIf="formulario.get('email')?.errors?.['email'] && formulario.get('email')?.touched">
+            E-mail esta incorreto
+        </div>
+    <br><button class="button"  (click)="Enviar()" [disabled]="!formulario.valid">Enviar</button>
+</form>
